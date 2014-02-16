@@ -2,6 +2,10 @@ package com.trey.marvel.model.api;
 
 import android.content.Context;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.internal.bind.DateTypeAdapter;
 import com.squareup.okhttp.HttpResponseCache;
 import com.squareup.okhttp.OkHttpClient;
 import com.trey.marvel.model.api.request.RequestSignature;
@@ -10,6 +14,7 @@ import java.io.IOException;
 
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
+import retrofit.converter.GsonConverter;
 
 /**
  * Created by Trey Robinson on 2/12/14.
@@ -47,8 +52,13 @@ public class MarvelApi {
 
         okHttpClient.setResponseCache(cache);
 
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                .create();
+
         mRestAdapter = new RestAdapter.Builder()
                 .setClient(new OkClient(okHttpClient))
+                .setConverter(new GsonConverter(gson))
                 .setServer(API_URL)
                 .build();
     }

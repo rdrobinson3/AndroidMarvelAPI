@@ -14,7 +14,7 @@ public class Character {
     public int id;
     public String name;
     public String description;
-    //public Date modified;
+    public Date modified;
     public String resourceURI;
     public List<Url> urls;
     public Image thumbnail;
