@@ -3,6 +3,7 @@ package com.trey.marvel.model.api.vo;
 import com.trey.marvel.model.api.vo.Image;
 import com.trey.marvel.model.api.vo.Url;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,9 +18,9 @@ public class Character {
     public String resourceURI;
     public List<Url> urls;
     public Image thumbnail;
-    public List<ComicList> comics;
-    public List<StoryList> stories;
-    public List<EventList> events;
-    public List<SeriesList>series;
+    public ItemList comics;
+    public ItemList stories;
+    public ItemList events;
+    public ItemList series;
 
 }

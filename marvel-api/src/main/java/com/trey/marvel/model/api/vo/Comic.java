@@ -25,10 +25,10 @@ public class Comic {
     public List<TextObject> textObjects;
     public String resourceURL;
     public List<Url> urls;
-    public SeriesSummary series;
-    public List<ComicSummary> variants;
-    public List<ComicSummary> collection;
-    public List<ComicSummary> collectedIssues;
+    public ItemList series;
+    public ItemList variants;
+    public ItemList collection;
+    public ItemList collectedIssues;
 
 
 }

@@ -11,15 +11,15 @@ public class BaseRequest {
         this.requestSignature = requestSignature;
     }
 
-    private long getTimestamp(){
+    public long getTimestamp(){
         return requestSignature.timeStamp;
     }
 
-    private String getHashSignature(){
+    public String getHashSignature(){
         return requestSignature.hashSignature;
     }
 
-    private String getApiKey(){
+    public String getApiKey(){
         return requestSignature.apiKey;
     }
 

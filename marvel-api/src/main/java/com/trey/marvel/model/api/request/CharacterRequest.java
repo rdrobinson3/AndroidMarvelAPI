@@ -10,23 +10,6 @@ import java.util.List;
  */
 public class CharacterRequest extends BaseRequest {
 
-    public enum OrderBy {
-        Name ("name")
-        ,NameDescending("-name")
-        ,Date("date")
-        ,DateDescending("-date");
-
-        private String value;
-
-        OrderBy(String value){
-            this.value = value;
-        }
-
-        public String getValue(){
-            return this.value;
-        }
-    }
-
     private String name;
     private Date modifiedSince;
     private List<Integer> comics;
@@ -39,7 +22,7 @@ public class CharacterRequest extends BaseRequest {
 
     public CharacterRequest(RequestSignature requestSignature){
         super(requestSignature);
-        orderBy = OrderBy.Name;
+        orderBy = OrderBy.Default;
     }
 
     public String getName() {
@@ -61,9 +44,6 @@ public class CharacterRequest extends BaseRequest {
     public List<Integer>getComics(){
         return this.comics;
     }
-    public String getComicsParameter() {
-        return StringUtils.join(this.comics, ",");
-    }
 
     public void setComics(List<Integer> comics) {
         this.comics = comics;
@@ -73,9 +53,6 @@ public class CharacterRequest extends BaseRequest {
         return series;
     }
 
-    public String getSeriesParameter() {
-        return StringUtils.join(this.series, ",");
-    }
     public void setSeries(List<Integer> series) {
         this.series = series;
     }
@@ -84,20 +61,12 @@ public class CharacterRequest extends BaseRequest {
         return events;
     }
 
-    public String getEventsParameter() {
-        return StringUtils.join(this.events, ",");
-    }
-
     public void setEvents(List<Integer> events) {
         this.events = events;
     }
 
     public List<Integer> getStories() {
         return stories;
-    }
-
-    public String getStoriesParameter() {
-        return StringUtils.join(this.stories, ",");
     }
 
     public void setStories(List<Integer> stories) {
@@ -126,6 +95,24 @@ public class CharacterRequest extends BaseRequest {
 
     public void setOffset(int offset) {
         this.offset = offset;
+    }
+
+    public enum OrderBy {
+        Default("")
+        ,Name ("name")
+        ,NameDescending("-name")
+        ,Date("date")
+        ,DateDescending("-date");
+
+        private String value;
+
+        OrderBy(String value){
+            this.value = value;
+        }
+
+        public String getValue(){
+            return this.value;
+        }
     }
 
 
