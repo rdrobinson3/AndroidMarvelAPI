@@ -2,22 +2,21 @@ package com.trey.marvel.model.api.manager;
 
 import com.trey.marvel.model.api.MarvelApi;
 import com.trey.marvel.model.api.request.ComicRequest;
+import com.trey.marvel.model.api.request.EventRequest;
 import com.trey.marvel.model.api.request.RequestSignature;
 import com.trey.marvel.model.api.request.CharacterRequest;
-import com.trey.marvel.model.api.response.ListComicsResponse;
 import com.trey.marvel.model.api.response.ServiceResponse;
 import com.trey.marvel.model.api.service.Characters;
 import com.trey.marvel.model.api.vo.Character;
 import com.trey.marvel.model.api.vo.Comic;
-
-import org.apache.commons.lang3.StringUtils;
+import com.trey.marvel.model.api.vo.Event;
 
 import retrofit.Callback;
 
 /**
  * Created by Trey Robinson on 2/12/14.
  */
-public class CharacterManager {
+public class CharacterManager extends BaseManager {
 
     private Characters characters;
 
@@ -33,9 +32,9 @@ public class CharacterManager {
                 , request.getHashSignature()
                 , request.getName()
                 , request.getModifiedSince()
-                , StringUtils.join(request.getStories(), ",")
-                , StringUtils.join(request.getSeries(), ",")
-                , StringUtils.join(request.getEvents(), ",")
+                , parameterizeList(request.getStories())
+                , parameterizeList(request.getSeries())
+                , parameterizeList(request.getEvents())
                 , request.getOrderBy().getValue()
                 , callback);
     }
@@ -49,7 +48,6 @@ public class CharacterManager {
                 , request.publicKey
                 , request.hashSignature
                 , callback);
-
     }
 
     public void getComicsForCharacterId(int characterId, ComicRequest request, Callback<ServiceResponse<Comic>> callback){
@@ -66,12 +64,28 @@ public class CharacterManager {
                 ,request.getDateRange()
                 ,request.isHasDigitalIssue()
                 ,request.getModifiedSince()
-                ,StringUtils.join(request.getCreators(), ",")
-                ,StringUtils.join(request.getSeries(), ",")
-                ,StringUtils.join(request.getEvents(), ",")
-                ,StringUtils.join(request.getStories(), ",")
-                ,StringUtils.join(request.getSharedAppearances(), ",")
-                ,StringUtils.join(request.getCollaborators(), ",")
+                ,parameterizeList(request.getCreators())
+                ,parameterizeList(request.getSeries())
+                ,parameterizeList(request.getEvents())
+                ,parameterizeList(request.getStories())
+                ,parameterizeList(request.getSharedAppearances())
+                ,parameterizeList(request.getCollaborators())
                 ,request.getOrderBy().getValue(), callback);
+    }
+
+    public void getEventsForCharacterId(int characterId, EventRequest request, Callback<ServiceResponse<Event>> callback){
+        characters.getEventsForCharacterId(characterId
+                , request.getLimit()
+                , request.getOffset()
+                , String.valueOf(request.getTimestamp())
+                , request.getApiKey()
+                , request.getHashSignature()
+                , request.getName()
+                , request.getModifiedSince()
+                , parameterizeList(request.getCreators())
+                , parameterizeList(request.getSeries())
+                , parameterizeList(request.getComics())
+                , parameterizeList(request.getStories())
+                , request.getOrderBy().getValue(), callback);
     }
 }

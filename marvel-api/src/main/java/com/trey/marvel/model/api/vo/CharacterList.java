@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class CharacterList {
 
+
     public int available;
     public int returned;
     public String collectionURL;

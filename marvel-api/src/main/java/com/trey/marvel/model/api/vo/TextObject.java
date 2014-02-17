@@ -6,5 +6,6 @@ package com.trey.marvel.model.api.vo;
 public class TextObject {
 
     public String type;
-    public String url;
+    public String language;
+    public String text;
 }

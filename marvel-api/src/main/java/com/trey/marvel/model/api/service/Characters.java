@@ -1,9 +1,9 @@
 package com.trey.marvel.model.api.service;
 
-import com.trey.marvel.model.api.response.ListComicsResponse;
 import com.trey.marvel.model.api.response.ServiceResponse;
 import com.trey.marvel.model.api.vo.Character;
 import com.trey.marvel.model.api.vo.Comic;
+import com.trey.marvel.model.api.vo.Event;
 
 import java.util.Date;
 
@@ -62,28 +62,36 @@ public interface Characters {
             , Callback<ServiceResponse<Comic>> callback);
 
 
-    /**
+
     @GET("/v1/public/characters/{characterid}/events")
     public void getEventsForCharacterId(@Path("characterid") int characterId
+            , @Query("limit") int limit
+            , @Query("offset") int offset
             , @Query("ts") String timestamp
             , @Query("apikey") String apikey
             , @Query("hash") String hashSignature
-            , Callback<ServiceResponse<Ev>> callback);
+            , @Query("name") String name
+            , @Query("modifiedSince") Date modifiedSince
+            , @Query("creators") String creators
+            , @Query("series") String series
+            , @Query("comics") String comics
+            , @Query("stories") String stories
+            , @Query("orderBy") String orderBy
+            , Callback<ServiceResponse<Event>> callback);
 
-    @GET("/v1/public/characters/{characterid}/series")
-    public void getSeriesForCharacterId(@Path("characterid") int characterId
-            , @Query("ts") String timestamp
-            , @Query("apikey") String apikey
-            , @Query("hash") String hashSignature
-            , Callback<ListCharacterResponse> callback);
+//    @GET("/v1/public/characters/{characterid}/series")
+//    public void getSeriesForCharacterId(@Path("characterid") int characterId
+//            , @Query("ts") String timestamp
+//            , @Query("apikey") String apikey
+//            , @Query("hash") String hashSignature
+//            , Callback<ListCharacterResponse> callback);
+//
+//    @GET("/v1/public/characters/{characterid}/stories")
+//    public void getStoriesForCharacterId(@Path("characterid") int characterId
+//            , @Query("ts") String timestamp
+//            , @Query("apikey") String apikey
+//            , @Query("hash") String hashSignature
+//            , Callback<ListCharacterResponse> callback);
 
-    @GET("/v1/public/characters/{characterid}/stories")
-    public void getStoriesForCharacterId(@Path("characterid") int characterId
-            , @Query("ts") String timestamp
-            , @Query("apikey") String apikey
-            , @Query("hash") String hashSignature
-            , Callback<ListCharacterResponse> callback);
-
-    **/
 
 }

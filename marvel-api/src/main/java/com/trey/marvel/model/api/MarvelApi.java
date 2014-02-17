@@ -9,8 +9,10 @@ import com.google.gson.internal.bind.DateTypeAdapter;
 import com.squareup.okhttp.HttpResponseCache;
 import com.squareup.okhttp.OkHttpClient;
 import com.trey.marvel.model.api.request.RequestSignature;
+import com.trey.marvel.model.api.response.DateAdapter;
 
 import java.io.IOException;
+import java.util.Date;
 
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
@@ -53,7 +55,7 @@ public class MarvelApi {
         okHttpClient.setResponseCache(cache);
 
         Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                .registerTypeAdapter(Date.class, new DateAdapter())
                 .create();
 
         mRestAdapter = new RestAdapter.Builder()

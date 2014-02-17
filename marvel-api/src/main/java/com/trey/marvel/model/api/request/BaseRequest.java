@@ -23,5 +23,4 @@ public class BaseRequest {
         return requestSignature.apiKey;
     }
 
-
 }

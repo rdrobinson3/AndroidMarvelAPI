@@ -34,7 +34,7 @@ public class ComicRequest extends BaseRequest {
         super(requestSignature);
         format = Format.Default;
         formatType = FormatType.Default;
-        dateDescriptor = DateDescriptor.None;
+        dateDescriptor = DateDescriptor.Default;
         orderBy = OrderBy.Default;
     }
 
@@ -167,7 +167,7 @@ public class ComicRequest extends BaseRequest {
     }
 
     public enum Format {
-        Default("")
+        Default(null)
         ,Comic ("comic")
         ,Magazine ("magazine")
         ,TradePaperback("trade paperback")
@@ -189,7 +189,7 @@ public class ComicRequest extends BaseRequest {
     }
 
     public enum FormatType {
-        Default("")
+        Default(null)
         ,Comic("comic")
         ,Collection("collection");
 
@@ -207,7 +207,7 @@ public class ComicRequest extends BaseRequest {
     }
 
     public enum DateDescriptor{
-        None("")
+        Default(null)
         ,LastWeek("lastWeek")
         ,ThisWeek("thisWeek")
         ,NextMonth("nextMonth")
@@ -224,7 +224,7 @@ public class ComicRequest extends BaseRequest {
         }
     }
     public enum OrderBy {
-        Default("")
+        Default(null)
         ,FOCDate("focDate")
         ,FOCDateDescending("-focDate")
         ,OnSaleDate("onsaleDate")

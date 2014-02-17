@@ -23,12 +23,20 @@ public class Comic {
     public String format;
     public int pageCount;
     public List<TextObject> textObjects;
-    public String resourceURL;
+    public String resourceURI;
     public List<Url> urls;
-    public ItemList series;
-    public ItemList variants;
-    public ItemList collection;
-    public ItemList collectedIssues;
+    public Item series;
+    public List<Item> variants;
+    public List<Item> collection;
+    public List<Item> collectedIssues;
+    public List<IndustryDate> dates;
+    public List<Price> prices;
+    public ImageInfo thumbnail;
+    public List<ImageInfo> images;
+    public CreatorList creators;
+    public CharacterList characters;
+    public ItemList stories;
+    public ItemList events;
 
 
 }
