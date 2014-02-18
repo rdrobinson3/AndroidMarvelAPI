@@ -6,6 +6,8 @@ package com.trey.marvel.model.api.request;
 public class BaseRequest {
 
     private RequestSignature requestSignature;
+    private int limit;
+    private int offset;
 
     public BaseRequest(RequestSignature requestSignature){
         this.requestSignature = requestSignature;
@@ -21,6 +23,22 @@ public class BaseRequest {
 
     public String getApiKey(){
         return requestSignature.apiKey;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
     }
 
 }

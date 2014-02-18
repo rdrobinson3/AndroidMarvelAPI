@@ -4,6 +4,8 @@ import com.trey.marvel.model.api.response.ServiceResponse;
 import com.trey.marvel.model.api.vo.Character;
 import com.trey.marvel.model.api.vo.Comic;
 import com.trey.marvel.model.api.vo.Event;
+import com.trey.marvel.model.api.vo.Series;
+import com.trey.marvel.model.api.vo.Story;
 
 import java.util.Date;
 
@@ -62,7 +64,6 @@ public interface Characters {
             , Callback<ServiceResponse<Comic>> callback);
 
 
-
     @GET("/v1/public/characters/{characterid}/events")
     public void getEventsForCharacterId(@Path("characterid") int characterId
             , @Query("limit") int limit
@@ -79,19 +80,39 @@ public interface Characters {
             , @Query("orderBy") String orderBy
             , Callback<ServiceResponse<Event>> callback);
 
-//    @GET("/v1/public/characters/{characterid}/series")
-//    public void getSeriesForCharacterId(@Path("characterid") int characterId
-//            , @Query("ts") String timestamp
-//            , @Query("apikey") String apikey
-//            , @Query("hash") String hashSignature
-//            , Callback<ListCharacterResponse> callback);
-//
-//    @GET("/v1/public/characters/{characterid}/stories")
-//    public void getStoriesForCharacterId(@Path("characterid") int characterId
-//            , @Query("ts") String timestamp
-//            , @Query("apikey") String apikey
-//            , @Query("hash") String hashSignature
-//            , Callback<ListCharacterResponse> callback);
+    @GET("/v1/public/characters/{characterid}/series")
+    public void getSeriesForCharacterId(@Path("characterid") int characterId
+            , @Query("limit") int limit
+            , @Query("offset") int offset
+            , @Query("ts") String timestamp
+            , @Query("apikey") String apikey
+            , @Query("hash") String hashSignature
+            , @Query("title") String title
+            , @Query("modifiedSince") Date modified
+            , @Query("comics") String comics
+            , @Query("stories") String stories
+            , @Query("events") String events
+            , @Query("creators") String creators
+            , @Query("seriesType") String seriesType
+            , @Query("contains") String contains
+            , @Query("orderBy") String orderBy
+            , Callback<ServiceResponse<Series>> callback);
+
+
+    @GET("/v1/public/characters/{characterid}/stories")
+    public void getStoriesForCharacterId(@Path("characterid") int characterId
+            , @Query("limit") int limit
+            , @Query("offset") int offset
+            , @Query("ts") String timestamp
+            , @Query("apikey") String apikey
+            , @Query("hash") String hashSignature
+            , @Query("modifiedSince") Date modified
+            , @Query("comics") String comics
+            , @Query("series") String series
+            , @Query("events") String events
+            , @Query("creators") String creators
+            , @Query("orderBy") String orderBy
+            , Callback<ServiceResponse<Story>> callback);
 
 
 }

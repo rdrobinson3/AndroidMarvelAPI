@@ -1,35 +1,23 @@
 package com.trey.marvel.model.api.request;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Trey Robinson on 2/14/14.
+ * Created by Trey Robinson on 2/17/14.
  */
-public class CharacterRequest extends BaseRequest {
+public class StoryRequest extends BaseRequest{
 
-    private String name;
     private Date modifiedSince;
     private List<Integer> comics;
     private List<Integer> series;
     private List<Integer> events;
-    private List<Integer> stories;
+    private List<Integer> creators;
     private OrderBy orderBy;
 
-
-    public CharacterRequest(RequestSignature requestSignature){
+    public StoryRequest(RequestSignature requestSignature){
         super(requestSignature);
         orderBy = OrderBy.Default;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Date getModifiedSince() {
@@ -40,8 +28,8 @@ public class CharacterRequest extends BaseRequest {
         this.modifiedSince = modifiedSince;
     }
 
-    public List<Integer>getComics(){
-        return this.comics;
+    public List<Integer> getComics() {
+        return comics;
     }
 
     public void setComics(List<Integer> comics) {
@@ -64,12 +52,12 @@ public class CharacterRequest extends BaseRequest {
         this.events = events;
     }
 
-    public List<Integer> getStories() {
-        return stories;
+    public List<Integer> getCreators() {
+        return creators;
     }
 
-    public void setStories(List<Integer> stories) {
-        this.stories = stories;
+    public void setCreators(List<Integer> creators) {
+        this.creators = creators;
     }
 
     public OrderBy getOrderBy() {
@@ -80,13 +68,12 @@ public class CharacterRequest extends BaseRequest {
         this.orderBy = orderBy;
     }
 
-
     public enum OrderBy {
-        Default("")
-        ,Name ("name")
-        ,NameDescending("-name")
-        ,Date("date")
-        ,DateDescending("-date");
+        Default(null)
+        ,Id("id")
+        ,IdDescending("-id")
+        ,ModifiedDate("modified")
+        ,ModifiedDateDescending("-modified");
 
         private String value;
 
@@ -98,6 +85,5 @@ public class CharacterRequest extends BaseRequest {
             return this.value;
         }
     }
-
 
 }

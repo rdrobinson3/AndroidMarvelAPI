@@ -14,6 +14,8 @@ import java.util.Locale;
 
 /**
  * Created by Trey Robinson on 2/16/14.
+ *
+ * Original Code From http://stackoverflow.com/questions/15563155/gson-to-json-conversion-with-two-dateformat
  */
 public class DateAdapter implements JsonDeserializer<Date> {
 
