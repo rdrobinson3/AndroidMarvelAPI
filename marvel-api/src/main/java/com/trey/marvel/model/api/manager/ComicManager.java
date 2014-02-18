@@ -41,4 +41,12 @@ public class ComicManager extends  BaseManager{
                 , parameterizeList(request.getCollaborators())
                 , request.getOrderBy().getValue(), callback);
     }
+
+    public void getComicWithId(int comicId, ComicRequest request, Callback<ServiceResponse<Comic>> callback){
+        comics.getComicWithId(comicId
+                , String.valueOf(request.getTimestamp())
+                , request.getApiKey()
+                , request.getHashSignature()
+                , callback);
+    }
 }

@@ -8,6 +8,7 @@ import java.util.Date;
 
 import retrofit.Callback;
 import retrofit.http.GET;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**
@@ -37,5 +38,11 @@ public interface Comics {
             , @Query("orderBy") String orderBy
             , Callback<ServiceResponse<Comic>> callback);
 
+    @GET("/v1/public/comics/{comicId}")
+    public void getComicWithId(@Path("comicId") int comicId
+            , @Query("ts") String timestamp
+            , @Query("apikey") String apikey
+            , @Query("hash") String hashSignature
+            , Callback<ServiceResponse<Comic>> callback);
 
 }
