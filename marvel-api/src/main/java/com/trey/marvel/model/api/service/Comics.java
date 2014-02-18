@@ -45,4 +45,19 @@ public interface Comics {
             , @Query("hash") String hashSignature
             , Callback<ServiceResponse<Comic>> callback);
 
+    @GET("/v1/public/comics/{comicId}/characters")
+    public void getCharactersForComic(@Path("comicId") int comicId
+            , @Query("limit") int limit
+            , @Query("offset") int offset
+            , @Query("ts") String timestamp
+            , @Query("apikey") String apikey
+            , @Query("hash") String hashSignature
+            , @Query("name") String name
+            , @Query("modifiedSince") Date modifiedSince
+            , @Query("series") String series
+            , @Query("events") String events
+            , @Query("stories") String comics
+            , @Query("orderBy") String orderBy
+            , Callback<ServiceResponse<Character>> callback);
+
 }

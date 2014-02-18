@@ -1,11 +1,13 @@
 package com.trey.marvel.model.api.manager;
 
 import com.trey.marvel.model.api.MarvelApi;
+import com.trey.marvel.model.api.request.CharacterRequest;
 import com.trey.marvel.model.api.request.ComicRequest;
 import com.trey.marvel.model.api.response.ServiceResponse;
 import com.trey.marvel.model.api.service.Characters;
 import com.trey.marvel.model.api.service.Comics;
-import com.trey.marvel.model.api.vo.Comic;
+import com.trey.marvel.model.api.vo.*;
+import com.trey.marvel.model.api.vo.Character;
 
 import retrofit.Callback;
 
@@ -47,6 +49,22 @@ public class ComicManager extends  BaseManager{
                 , String.valueOf(request.getTimestamp())
                 , request.getApiKey()
                 , request.getHashSignature()
+                , callback);
+    }
+
+    public void getCharactersForComic(int comicId, CharacterRequest request, Callback<ServiceResponse<Character>> callback){
+        comics.getCharactersForComic(comicId
+                , request.getLimit()
+                , request.getOffset()
+                , String.valueOf(request.getTimestamp())
+                , request.getApiKey()
+                , request.getHashSignature()
+                , request.getName()
+                , request.getModifiedSince()
+                , parameterizeList(request.getStories())
+                , parameterizeList(request.getSeries())
+                , parameterizeList(request.getEvents())
+                , request.getOrderBy().getValue()
                 , callback);
     }
 }
