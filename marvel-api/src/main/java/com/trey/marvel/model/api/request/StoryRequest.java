@@ -13,6 +13,7 @@ public class StoryRequest extends BaseRequest{
     private List<Integer> series;
     private List<Integer> events;
     private List<Integer> creators;
+    private List<Integer> characters;
     private OrderBy orderBy;
 
     public StoryRequest(RequestSignature requestSignature){
@@ -58,6 +59,14 @@ public class StoryRequest extends BaseRequest{
 
     public void setCreators(List<Integer> creators) {
         this.creators = creators;
+    }
+
+    public List<Integer> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<Integer> characters) {
+        this.characters = characters;
     }
 
     public OrderBy getOrderBy() {

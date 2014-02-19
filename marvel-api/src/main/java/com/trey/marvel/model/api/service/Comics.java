@@ -78,6 +78,37 @@ public interface Comics {
             , @Query("orderBy") String orderBy
             , Callback<ServiceResponse<Creator>> callback);
 
+    @GET("/v1/public/comics/{comicId}/events")
+    public void getEventsForComicId(@Path("comicId") int comicId
+            , @Query("limit") int limit
+            , @Query("offset") int offset
+            , @Query("ts") String timestamp
+            , @Query("apikey") String apikey
+            , @Query("hash") String hashSignature
+            , @Query("name") String name
+            , @Query("modifiedSince") Date modifiedSince
+            , @Query("creator") String creators
+            , @Query("characters") String characters
+            , @Query("series") String series
+            , @Query("stories") String stories
+            , @Query("orderBy") String orderBy
+            , Callback<ServiceResponse<Event>> callback);
+
+
+    @GET("/v1/public/comics/{comicId}/stories")
+    public void getStoriesForComicId(@Path("comicId") int comicId
+            , @Query("limit") int limit
+            , @Query("offset") int offset
+            , @Query("ts") String timestamp
+            , @Query("apikey") String apikey
+            , @Query("hash") String hashSignature
+            , @Query("modifiedSince") Date modifiedSince
+            , @Query("series") String series
+            , @Query("events") String events
+            , @Query("creator") String creators
+            , @Query("characters") String characters
+            , @Query("orderBy") String orderBy
+            , Callback<ServiceResponse<Story>> callback);
 
 
 

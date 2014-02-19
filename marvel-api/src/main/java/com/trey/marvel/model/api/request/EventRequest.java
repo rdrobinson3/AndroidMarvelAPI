@@ -14,6 +14,7 @@ public class EventRequest extends BaseRequest {
     private List<Integer> series;
     private List<Integer> comics;
     private List<Integer> stories;
+    private List<Integer> characters;
     private OrderBy orderBy;
     private int limit;
     private int offset;
@@ -69,6 +70,14 @@ public class EventRequest extends BaseRequest {
 
     public void setStories(List<Integer> stories) {
         this.stories = stories;
+    }
+
+    public List<Integer> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<Integer> characters) {
+        this.characters = characters;
     }
 
     public OrderBy getOrderBy() {
