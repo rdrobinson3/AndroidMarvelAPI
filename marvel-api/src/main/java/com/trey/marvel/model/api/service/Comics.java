@@ -46,7 +46,7 @@ public interface Comics {
             , Callback<ServiceResponse<Comic>> callback);
 
     @GET("/v1/public/comics/{comicId}/characters")
-    public void getCharactersForComic(@Path("comicId") int comicId
+    public void getCharactersForComicId(@Path("comicId") int comicId
             , @Query("limit") int limit
             , @Query("offset") int offset
             , @Query("ts") String timestamp
@@ -56,8 +56,29 @@ public interface Comics {
             , @Query("modifiedSince") Date modifiedSince
             , @Query("series") String series
             , @Query("events") String events
-            , @Query("stories") String comics
+            , @Query("stories") String stories
             , @Query("orderBy") String orderBy
             , Callback<ServiceResponse<Character>> callback);
+
+    @GET("/v1/public/comics/{comicId}/creators")
+    public void getCreatorsForComicId(@Path("comicId") int comicId
+            , @Query("limit") int limit
+            , @Query("offset") int offset
+            , @Query("ts") String timestamp
+            , @Query("apikey") String apikey
+            , @Query("hash") String hashSignature
+            , @Query("firstName") String firstName
+            , @Query("middleName") String middleName
+            , @Query("lastName") String lastName
+            , @Query("suffix") String suffix
+            , @Query("modifiedSince") Date modifiedSince
+            , @Query("comics") String comics
+            , @Query("series") String series
+            , @Query("stories") String stories
+            , @Query("orderBy") String orderBy
+            , Callback<ServiceResponse<Creator>> callback);
+
+
+
 
 }

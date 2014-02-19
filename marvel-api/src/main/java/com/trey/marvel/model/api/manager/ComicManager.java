@@ -3,6 +3,7 @@ package com.trey.marvel.model.api.manager;
 import com.trey.marvel.model.api.MarvelApi;
 import com.trey.marvel.model.api.request.CharacterRequest;
 import com.trey.marvel.model.api.request.ComicRequest;
+import com.trey.marvel.model.api.request.CreatorRequest;
 import com.trey.marvel.model.api.response.ServiceResponse;
 import com.trey.marvel.model.api.service.Characters;
 import com.trey.marvel.model.api.service.Comics;
@@ -52,8 +53,8 @@ public class ComicManager extends  BaseManager{
                 , callback);
     }
 
-    public void getCharactersForComic(int comicId, CharacterRequest request, Callback<ServiceResponse<Character>> callback){
-        comics.getCharactersForComic(comicId
+    public void getCharactersForComicId(int comicId, CharacterRequest request, Callback<ServiceResponse<Character>> callback){
+        comics.getCharactersForComicId(comicId
                 , request.getLimit()
                 , request.getOffset()
                 , String.valueOf(request.getTimestamp())
@@ -64,6 +65,25 @@ public class ComicManager extends  BaseManager{
                 , parameterizeList(request.getStories())
                 , parameterizeList(request.getSeries())
                 , parameterizeList(request.getEvents())
+                , request.getOrderBy().getValue()
+                , callback);
+    }
+
+    public void getCreatorsForComicId(int comicId, CreatorRequest request, Callback<ServiceResponse<Creator>> callback){
+        comics.getCreatorsForComicId(comicId
+                , request.getLimit()
+                , request.getOffset()
+                , String.valueOf(request.getTimestamp())
+                , request.getApiKey()
+                , request.getHashSignature()
+                , request.getFirstName()
+                , request.getMiddleName()
+                , request.getLastName()
+                , request.getSuffix()
+                , request.getModifiedSince()
+                , parameterizeList(request.getComics())
+                , parameterizeList(request.getSeries())
+                , parameterizeList(request.getStories())
                 , request.getOrderBy().getValue()
                 , callback);
     }
