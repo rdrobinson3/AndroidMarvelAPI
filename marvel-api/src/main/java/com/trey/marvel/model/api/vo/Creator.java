@@ -15,11 +15,13 @@ public class Creator {
     public String suffix;
     public String fullName;
     public Date modified;
-    public String resourceURI;
-    public List<Url> urls;
     public ImageInfo thumbnail;
-    public SeriesList series;
+    public String resourceURI;
     public ItemList comics;
+    public ItemList series;
+    public ItemList stories;
     public ItemList events;
+    public List<Url> urls;
+
 
 }

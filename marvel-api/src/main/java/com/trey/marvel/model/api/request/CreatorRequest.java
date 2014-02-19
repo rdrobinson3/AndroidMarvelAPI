@@ -20,6 +20,7 @@ public class CreatorRequest extends BaseRequest {
 
     public CreatorRequest(RequestSignature requestSignature) {
         super(requestSignature);
+        orderBy = OrderBy.Default;
     }
 
     public String getFirstName() {
