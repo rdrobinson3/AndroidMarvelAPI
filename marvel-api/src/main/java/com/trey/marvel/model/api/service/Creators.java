@@ -46,6 +46,7 @@ public interface Creators {
 
     @GET("/v1/public/creators{creatorId}/comics")
     public void getComicsForCreatorId(@Path("creatorId") int creatorId
+            , @Query("limit") int limit
             , @Query("offset") int offset
             , @Query("ts") String timestamp
             , @Query("apikey") String apikey
@@ -68,6 +69,7 @@ public interface Creators {
 
     @GET("/v1/public/creators{creatorId}/events")
     public void getEventsForCreatorId(@Path("creatorId") int creatorId
+            , @Query("limit") int limit
             , @Query("offset") int offset
             , @Query("ts") String timestamp
             , @Query("apikey") String apikey
@@ -83,6 +85,7 @@ public interface Creators {
 
     @GET("/v1/public/creators{creatorId}/series")
     public void getSeriesForCreatorId(@Path("creatorId") int creatorId
+            , @Query("limit") int limit
             , @Query("offset") int offset
             , @Query("ts") String timestamp
             , @Query("apikey") String apikey
@@ -100,6 +103,7 @@ public interface Creators {
 
     @GET("/v1/public/creators{creatorId}/stories")
     public void getStoriesForCreatorId(@Path("creatorId") int creatorId
+            , @Query("limit") int limit
             , @Query("offset") int offset
             , @Query("ts") String timestamp
             , @Query("apikey") String apikey
