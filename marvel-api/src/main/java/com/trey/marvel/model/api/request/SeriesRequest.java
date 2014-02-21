@@ -14,6 +14,7 @@ public class SeriesRequest extends BaseRequest{
     private List<Integer> stories;
     private List<Integer> events;
     private List<Integer> creators;
+    private List<Integer> characters;
     private SeriesType seriesType;
     private Contains contains;
     private OrderBy orderBy;
@@ -73,6 +74,14 @@ public class SeriesRequest extends BaseRequest{
 
     public void setCreators(List<Integer> creators) {
         this.creators = creators;
+    }
+
+    public List<Integer> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<Integer> characters) {
+        this.characters = characters;
     }
 
     public SeriesType getSeriesType() {

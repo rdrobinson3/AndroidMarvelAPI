@@ -21,6 +21,7 @@ public class ComicRequest extends BaseRequest {
     private boolean hasDigitalIssue;
     private Date modifiedSince;
     private List<Integer> creators;
+    private List<Integer> characters;
     private List<Integer> series;
     private List<Integer> events;
     private List<Integer> stories;
@@ -100,6 +101,14 @@ public class ComicRequest extends BaseRequest {
 
     public void setCreators(List<Integer> creators) {
         this.creators = creators;
+    }
+
+    public List<Integer> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<Integer> characters) {
+        this.characters = characters;
     }
 
     public List<Integer> getSeries() {
