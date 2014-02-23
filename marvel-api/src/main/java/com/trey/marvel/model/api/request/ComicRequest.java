@@ -1,9 +1,5 @@
 package com.trey.marvel.model.api.request;
 
-import com.trey.marvel.model.api.vo.Comic;
-
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Date;
 import java.util.List;
 

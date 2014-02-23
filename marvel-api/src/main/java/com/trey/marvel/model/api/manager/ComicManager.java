@@ -7,10 +7,12 @@ import com.trey.marvel.model.api.request.CreatorRequest;
 import com.trey.marvel.model.api.request.EventRequest;
 import com.trey.marvel.model.api.request.StoryRequest;
 import com.trey.marvel.model.api.response.ServiceResponse;
-import com.trey.marvel.model.api.service.Characters;
 import com.trey.marvel.model.api.service.Comics;
-import com.trey.marvel.model.api.vo.*;
 import com.trey.marvel.model.api.vo.Character;
+import com.trey.marvel.model.api.vo.Comic;
+import com.trey.marvel.model.api.vo.Creator;
+import com.trey.marvel.model.api.vo.Event;
+import com.trey.marvel.model.api.vo.Story;
 
 import retrofit.Callback;
 

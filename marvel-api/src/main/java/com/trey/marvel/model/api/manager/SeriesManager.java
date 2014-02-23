@@ -1,13 +1,13 @@
 package com.trey.marvel.model.api.manager;
 
 import com.trey.marvel.model.api.MarvelApi;
+import com.trey.marvel.model.api.request.CharacterRequest;
 import com.trey.marvel.model.api.request.ComicRequest;
 import com.trey.marvel.model.api.request.CreatorRequest;
 import com.trey.marvel.model.api.request.EventRequest;
 import com.trey.marvel.model.api.request.SeriesRequest;
 import com.trey.marvel.model.api.request.StoryRequest;
 import com.trey.marvel.model.api.response.ServiceResponse;
-import com.trey.marvel.model.api.service.Events;
 import com.trey.marvel.model.api.service.Series;
 import com.trey.marvel.model.api.vo.Comic;
 import com.trey.marvel.model.api.vo.Creator;
@@ -51,6 +51,22 @@ public class SeriesManager extends BaseManager {
                 , String.valueOf(request.getTimestamp())
                 , request.getApiKey()
                 , request.getHashSignature()
+                , callback);
+    }
+
+    public void getCharactersForSeriesId(int seriesId, CharacterRequest request, Callback<ServiceResponse<com.trey.marvel.model.api.vo.Character>> callback){
+        series.getCharactersForSeriesId(seriesId
+                , request.getLimit()
+                , request.getOffset()
+                , String.valueOf(request.getTimestamp())
+                , request.getApiKey()
+                , request.getHashSignature()
+                , request.getName()
+                , request.getModifiedSince()
+                , parameterizeList(request.getComics())
+                , parameterizeList(request.getEvents())
+                , parameterizeList(request.getStories())
+                , request.getOrderBy().getValue()
                 , callback);
     }
 

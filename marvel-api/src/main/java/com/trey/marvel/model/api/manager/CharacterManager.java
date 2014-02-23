@@ -1,10 +1,10 @@
 package com.trey.marvel.model.api.manager;
 
 import com.trey.marvel.model.api.MarvelApi;
+import com.trey.marvel.model.api.request.CharacterRequest;
 import com.trey.marvel.model.api.request.ComicRequest;
 import com.trey.marvel.model.api.request.EventRequest;
 import com.trey.marvel.model.api.request.RequestSignature;
-import com.trey.marvel.model.api.request.CharacterRequest;
 import com.trey.marvel.model.api.request.SeriesRequest;
 import com.trey.marvel.model.api.request.StoryRequest;
 import com.trey.marvel.model.api.response.ServiceResponse;
