@@ -14,6 +14,7 @@ public class CreatorRequest extends BaseRequest {
     private String suffix;
     private Date modifiedSince;
     private List<Integer> comics;
+    private List<Integer> events;
     private List<Integer> series;
     private List<Integer> stories;
     private OrderBy orderBy;
@@ -69,6 +70,14 @@ public class CreatorRequest extends BaseRequest {
 
     public void setComics(List<Integer> comics) {
         this.comics = comics;
+    }
+
+    public List<Integer> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Integer> events) {
+        this.events = events;
     }
 
     public List<Integer> getSeries() {
