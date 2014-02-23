@@ -54,6 +54,7 @@ public interface Events {
             , @Query("orderBy") String orderBy
             , Callback<ServiceResponse<Character>> callback);
 
+
     @GET("/v1/public/events/{eventId}/comics")
     public void getComicsForEventId(@Path("eventId") int eventId
             , @Query("limit") int limit
@@ -71,7 +72,6 @@ public interface Events {
             , @Query("creators") String creators
             , @Query("characters") String characters
             , @Query("series") String series
-            , @Query("events") String events
             , @Query("stories") String stories
             , @Query("sharedAppearances") String sharedAppearances
             , @Query("collaborators") String collaborators
