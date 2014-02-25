@@ -22,5 +22,4 @@ dependencies {
     compile 'com.android.support:support-v4:+'
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     compile project(':marvel-api')
-
 }
