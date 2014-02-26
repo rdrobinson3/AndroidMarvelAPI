@@ -18,6 +18,8 @@ import com.trey.marvel.model.api.vo.Story;
 import retrofit.Callback;
 
 /**
+ * Manager that handles retrieval for lists of characters and requests related to a specific character id.
+ *
  * Created by Trey Robinson on 2/12/14.
  */
 public class CharacterManager extends BaseManager {
@@ -28,6 +30,11 @@ public class CharacterManager extends BaseManager {
         characters = MarvelApi.getInstance().getRestAdapter().create(Characters.class);
     }
 
+    /**
+     * Retrieve all characters matching the provided request parameters.
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void fetchCharacters(CharacterRequest request, Callback<ServiceResponse<Character>> callback) {
         characters.listCharacters(request.getLimit()
                 , request.getOffset()
@@ -43,8 +50,11 @@ public class CharacterManager extends BaseManager {
                 , callback);
     }
 
-    //this request takes no additional arguments so the request signature is generate automatically here rather than
-    //being included in an empty request. This may change in the future to include a base request for consistency.
+    /**
+     * Retrieve a character with a specific ID.
+     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param callback Handler called on request completion
+     */
     public void getCharacterWithId(int characterId, Callback<ServiceResponse<Character>> callback) {
         RequestSignature request = RequestSignature.create();
         characters.getCharacterWithId(characterId
@@ -54,6 +64,12 @@ public class CharacterManager extends BaseManager {
                 , callback);
     }
 
+    /**
+     * Retrieve all comics for a specific character that match the provided request parameters.
+     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getComicsForCharacterId(int characterId, ComicRequest request, Callback<ServiceResponse<Comic>> callback) {
         characters.getComicsForCharacterId(characterId
                 , request.getLimit()
@@ -77,6 +93,13 @@ public class CharacterManager extends BaseManager {
                 , request.getOrderBy().getValue(), callback);
     }
 
+
+    /**
+     * Retrieve all events for a specific character that match the provided request parameters.
+     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getEventsForCharacterId(int characterId, EventRequest request, Callback<ServiceResponse<Event>> callback) {
         characters.getEventsForCharacterId(characterId
                 , request.getLimit()
@@ -94,6 +117,12 @@ public class CharacterManager extends BaseManager {
                 , callback);
     }
 
+    /**
+     * Retrieve all series for a specific character that match the provided request parameters.
+     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getSeriesForCharacterId(int characterId, SeriesRequest request, Callback<ServiceResponse<Series>> callback) {
         characters.getSeriesForCharacterId(characterId
                 , request.getLimit()
@@ -113,6 +142,12 @@ public class CharacterManager extends BaseManager {
                 , callback);
     }
 
+    /**
+     * Retrieve all Stories for a specific character that match the provided request parameters.
+     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getStoriesForCharacterId(int characterId, StoryRequest request, Callback<ServiceResponse<Story>> callback){
         characters.getStoriesForCharacterId(characterId
                 , request.getLimit()
