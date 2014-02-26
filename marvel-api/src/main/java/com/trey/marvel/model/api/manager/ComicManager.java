@@ -17,6 +17,8 @@ import com.trey.marvel.model.api.vo.Story;
 import retrofit.Callback;
 
 /**
+ * Manager that handles retrieval for lists of comics and requests related to a specific comic id.
+ *
  * Created by Trey Robinson on 2/17/14.
  */
 public class ComicManager extends  BaseManager{
@@ -27,6 +29,11 @@ public class ComicManager extends  BaseManager{
         comics = MarvelApi.getInstance().getRestAdapter().create(Comics.class);
     }
 
+    /**
+     * Retrieve all comics matching the provided request parameters.
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void listComics(ComicRequest request, Callback<ServiceResponse<Comic>> callback) {
         comics.listComics(request.getLimit()
                 , request.getOffset()
@@ -49,6 +56,11 @@ public class ComicManager extends  BaseManager{
                 , request.getOrderBy().getValue(), callback);
     }
 
+    /**
+     * Retrieve a comic with a specific ID.
+     * @param comicId  Unique ID for the comic
+     * @param callback Handler called on request completion
+     */
     public void getComicWithId(int comicId, ComicRequest request, Callback<ServiceResponse<Comic>> callback){
         comics.getComicWithId(comicId
                 , String.valueOf(request.getTimestamp())
@@ -57,6 +69,12 @@ public class ComicManager extends  BaseManager{
                 , callback);
     }
 
+    /**
+     * Retrieve all characters for a comic with a specific ID.
+     * @param comicId  Unique ID for the comic
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getCharactersForComicId(int comicId, CharacterRequest request, Callback<ServiceResponse<Character>> callback){
         comics.getCharactersForComicId(comicId
                 , request.getLimit()
@@ -73,6 +91,13 @@ public class ComicManager extends  BaseManager{
                 , callback);
     }
 
+
+    /**
+     * Retrieve all creators for a comic with a specific ID.
+     * @param comicId  Unique ID for the comic
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getCreatorsForComicId(int comicId, CreatorRequest request, Callback<ServiceResponse<Creator>> callback){
         comics.getCreatorsForComicId(comicId
                 , request.getLimit()
@@ -92,6 +117,12 @@ public class ComicManager extends  BaseManager{
                 , callback);
     }
 
+    /**
+     * Retrieve events for a comic with a specific ID.
+     * @param comicId  Unique ID for the comic
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getEventsForComicId(int comicId, EventRequest request, Callback<ServiceResponse<Event>> callback){
         comics.getEventsForComicId(comicId
                 , request.getLimit()
@@ -109,6 +140,12 @@ public class ComicManager extends  BaseManager{
                 , callback);
     }
 
+    /**
+     * Retrieve all stories for a comic with a specific ID.
+     * @param comicId  Unique ID for the comic
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getStoriesForComicId(int comicId, StoryRequest request, Callback<ServiceResponse<Story>> callback){
         comics.getStoriesForComicId(comicId
                 , request.getLimit()

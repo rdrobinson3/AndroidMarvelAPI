@@ -66,7 +66,7 @@ public class CharacterManager extends BaseManager {
 
     /**
      * Retrieve all comics for a specific character that match the provided request parameters.
-     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param characterId  Unique ID for the character
      * @param request Parameters for the request
      * @param callback Handler called on request completion
      */
@@ -96,7 +96,7 @@ public class CharacterManager extends BaseManager {
 
     /**
      * Retrieve all events for a specific character that match the provided request parameters.
-     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param characterId  Unique ID for the character
      * @param request Parameters for the request
      * @param callback Handler called on request completion
      */
@@ -119,7 +119,7 @@ public class CharacterManager extends BaseManager {
 
     /**
      * Retrieve all series for a specific character that match the provided request parameters.
-     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param characterId  Unique ID for the character
      * @param request Parameters for the request
      * @param callback Handler called on request completion
      */
@@ -144,7 +144,7 @@ public class CharacterManager extends BaseManager {
 
     /**
      * Retrieve all Stories for a specific character that match the provided request parameters.
-     * @param characterId  Unique ID for the character that will be returned by the service
+     * @param characterId  Unique ID for the character
      * @param request Parameters for the request
      * @param callback Handler called on request completion
      */
