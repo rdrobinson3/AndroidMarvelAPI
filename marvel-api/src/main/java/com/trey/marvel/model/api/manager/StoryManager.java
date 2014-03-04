@@ -17,6 +17,8 @@ import com.trey.marvel.model.api.vo.Story;
 import retrofit.Callback;
 
 /**
+ * Manager that handles retrieval of story information and requests related to a specific story id.
+ *
  * Created by Trey Robinson on 2/23/14.
  */
 public class StoryManager extends BaseManager {
@@ -27,6 +29,11 @@ public class StoryManager extends BaseManager {
         stories = MarvelApi.getInstance().getRestAdapter().create(Stories.class);
     }
 
+    /**
+     * Retrieve stories matching the provided request parameters.
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void listStories(StoryRequest request, Callback<ServiceResponse<Story>> callback) {
         stories.listStories(request.getLimit()
                 , request.getOffset()
@@ -42,6 +49,11 @@ public class StoryManager extends BaseManager {
                 , callback);
     }
 
+    /**
+     * Retrieve a story with a specific ID.
+     * @param storyId  Unique ID for the event
+     * @param callback Handler called on request completion
+     */
     public void getStoryWithId(int storyId, StoryRequest request, Callback<ServiceResponse<Story>> callback) {
         stories.getStoryWithId(storyId
                 , String.valueOf(request.getTimestamp())
@@ -50,6 +62,12 @@ public class StoryManager extends BaseManager {
                 , callback);
     }
 
+    /**
+     * Retrieve characters for a story with a specific ID.
+     * @param storyId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getCharactersForStoryId(int storyId, CharacterRequest request, Callback<ServiceResponse<com.trey.marvel.model.api.vo.Character>> callback){
         stories.getCharactersForStoryId(storyId
                 , request.getLimit()
@@ -66,7 +84,12 @@ public class StoryManager extends BaseManager {
                 , callback);
     }
 
-
+    /**
+     * Retrieve comics for a story with a specific ID.
+     * @param storyId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getComicsForStoryId(int storyId, ComicRequest request, Callback<ServiceResponse<Comic>> callback) {
         stories.getComicsForStoryId(storyId
                 , request.getLimit()
@@ -90,6 +113,12 @@ public class StoryManager extends BaseManager {
                 , request.getOrderBy().getValue(), callback);
     }
 
+    /**
+     * Retrieve creators for a story with a specific ID.
+     * @param storyId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getCreatorsForSeriesId(int storyId, CreatorRequest request, Callback<ServiceResponse<Creator>> callback){
         stories.getCreatorsForStoryId(storyId
                 , request.getLimit()
@@ -109,6 +138,12 @@ public class StoryManager extends BaseManager {
                 , callback);
     }
 
+    /**
+     * Retrieve events for a story with a specific ID.
+     * @param storyId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getEventsForStoryId(int storyId, EventRequest request, Callback<ServiceResponse<Event>> callback) {
         stories.getEventsForStoryId(storyId
                 , request.getLimit()
@@ -126,6 +161,12 @@ public class StoryManager extends BaseManager {
                 , callback);
     }
 
+    /**
+     * Retrieve series for a story with a specific ID.
+     * @param storyId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getSeriesForStoryId(int storyId, SeriesRequest request, Callback<ServiceResponse<com.trey.marvel.model.api.vo.Series>> callback) {
         stories.getSeriesForStoryId(storyId
                 , request.getLimit()

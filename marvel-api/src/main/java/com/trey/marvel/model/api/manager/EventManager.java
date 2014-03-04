@@ -19,6 +19,8 @@ import com.trey.marvel.model.api.vo.Story;
 import retrofit.Callback;
 
 /**
+ * Manager that handles retrieval event information and requests related to a specific event id.
+ *
  * Created by Trey Robinson on 2/22/14.
  */
 public class EventManager extends BaseManager{
@@ -29,6 +31,11 @@ public class EventManager extends BaseManager{
         events = MarvelApi.getInstance().getRestAdapter().create(Events.class);
     }
 
+    /**
+     * Retrieve all events matching the provided request parameters.
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void listCreators(EventRequest request, Callback<ServiceResponse<Event>> callback) {
         events.listEvents(request.getLimit()
                 , request.getOffset()
@@ -46,6 +53,11 @@ public class EventManager extends BaseManager{
                 , callback);
     }
 
+    /**
+     * Retrieve a event with a specific ID.
+     * @param eventId  Unique ID for the event
+     * @param callback Handler called on request completion
+     */
     public void getEventWithId(int eventId, CreatorRequest request, Callback<ServiceResponse<Event>> callback) {
         events.getEventWithId(eventId
                 , String.valueOf(request.getTimestamp())
@@ -54,6 +66,12 @@ public class EventManager extends BaseManager{
                 , callback);
     }
 
+    /**
+     * Retrieve all characters for an event with a specific ID.
+     * @param eventId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getCharactersForEventId(int eventId, CharacterRequest request, Callback<ServiceResponse<Character>> callback){
         events.getCharactersForEventId(eventId
                 , request.getLimit()
@@ -70,6 +88,12 @@ public class EventManager extends BaseManager{
                 , callback);
     }
 
+    /**
+     * Retrieve all comics for an event with a specific ID.
+     * @param eventId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getComicsForEventId(int eventId, ComicRequest request, Callback<ServiceResponse<Comic>> callback) {
         events.getComicsForEventId(eventId
                 , request.getLimit()
@@ -93,6 +117,12 @@ public class EventManager extends BaseManager{
                 , request.getOrderBy().getValue(), callback);
     }
 
+    /**
+     * Retrieve all creators for an event with a specific ID.
+     * @param eventId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getCreatorsForEventId(int eventId, CreatorRequest request, Callback<ServiceResponse<Creator>> callback){
         events.getCreatorsForEventId(eventId
                 , request.getLimit()
@@ -112,6 +142,12 @@ public class EventManager extends BaseManager{
                 , callback);
     }
 
+    /**
+     * Retrieve all series for an event with a specific ID.
+     * @param eventId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getSeriesForEventId(int eventId, SeriesRequest request, Callback<ServiceResponse<Series>> callback) {
         events.getSeriesForEventId(eventId
                 , request.getLimit()
@@ -131,7 +167,13 @@ public class EventManager extends BaseManager{
                 , callback);
     }
 
-    public void getStoriesForComicId(int eventId, StoryRequest request, Callback<ServiceResponse<Story>> callback) {
+    /**
+     * Retrieve all stories for an event with a specific ID.
+     * @param eventId  Unique ID for the event
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
+    public void getStoriesForEventId(int eventId, StoryRequest request, Callback<ServiceResponse<Story>> callback) {
         events.getStoriesForEventId(eventId
                 , request.getLimit()
                 , request.getOffset()

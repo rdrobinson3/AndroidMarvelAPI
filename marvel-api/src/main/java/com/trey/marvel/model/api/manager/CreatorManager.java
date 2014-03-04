@@ -4,6 +4,7 @@ import com.trey.marvel.model.api.MarvelApi;
 import com.trey.marvel.model.api.request.ComicRequest;
 import com.trey.marvel.model.api.request.CreatorRequest;
 import com.trey.marvel.model.api.request.EventRequest;
+import com.trey.marvel.model.api.request.RequestSignature;
 import com.trey.marvel.model.api.request.SeriesRequest;
 import com.trey.marvel.model.api.request.StoryRequest;
 import com.trey.marvel.model.api.response.ServiceResponse;
@@ -17,6 +18,8 @@ import com.trey.marvel.model.api.vo.Story;
 import retrofit.Callback;
 
 /**
+ * Manager that handles retrieval of creator information and requests related to a specific creator id.
+ *
  * Created by Trey Robinson on 2/21/14.
  */
 public class CreatorManager extends BaseManager {
@@ -27,6 +30,11 @@ public class CreatorManager extends BaseManager {
         creators = MarvelApi.getInstance().getRestAdapter().create(Creators.class);
     }
 
+    /**
+     * Retrieve all creators matching the provided request parameters.
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void listCreators(CreatorRequest request, Callback<ServiceResponse<Creator>> callback) {
         creators.listCreators(request.getLimit()
                 , request.getOffset()
@@ -45,14 +53,26 @@ public class CreatorManager extends BaseManager {
                 , callback);
     }
 
-    public void getCreatorWithId(int creatorId, CreatorRequest request, Callback<ServiceResponse<Creator>> callback) {
+    /**
+     * Retrieve a creator with a specific ID.
+     * @param creatorId  Unique ID for the creator
+     * @param callback Handler called on request completion
+     */
+    public void getCreatorWithId(int creatorId, Callback<ServiceResponse<Creator>> callback) {
+        RequestSignature request = RequestSignature.create();
         creators.getCreatorWithId(creatorId
-                , String.valueOf(request.getTimestamp())
-                , request.getApiKey()
-                , request.getHashSignature()
+                , String.valueOf(request.timeStamp)
+                , request.publicKey
+                , request.hashSignature
                 , callback);
     }
 
+    /**
+     * Retrieve all comics for a creator with a specific ID.
+     * @param creatorId  Unique ID for the creator
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getComicsForCreatorId(int creatorId, ComicRequest request, Callback<ServiceResponse<Comic>> callback) {
         creators.getComicsForCreatorId(creatorId
                 , request.getLimit()
@@ -76,6 +96,12 @@ public class CreatorManager extends BaseManager {
                 , request.getOrderBy().getValue(), callback);
     }
 
+    /**
+     * Retrieve all events for a creator with a specific ID.
+     * @param creatorId  Unique ID for the creator
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getEventsForCreatorId(int creatorId, EventRequest request, Callback<ServiceResponse<Event>> callback) {
         creators.getEventsForCreatorId(creatorId
                 , request.getLimit()
@@ -93,6 +119,12 @@ public class CreatorManager extends BaseManager {
                 , callback);
     }
 
+    /**
+     * Retrieve all series for a creator with a specific ID.
+     * @param creatorId  Unique ID for the creator
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
     public void getSeriesForCreatorId(int creatorId, SeriesRequest request, Callback<ServiceResponse<Series>> callback) {
         creators.getSeriesForCreatorId(creatorId
                 , request.getLimit()
@@ -112,8 +144,14 @@ public class CreatorManager extends BaseManager {
                 , callback);
     }
 
-    public void getStoriesForComicId(int comicId, StoryRequest request, Callback<ServiceResponse<Story>> callback) {
-        creators.getStoriesForCreatorId(comicId
+    /**
+     * Retrieve all stories for a creator with a specific ID.
+     * @param creatorId  Unique ID for the creator
+     * @param request Parameters for the request
+     * @param callback Handler called on request completion
+     */
+    public void getStoriesForComicId(int creatorId, StoryRequest request, Callback<ServiceResponse<Story>> callback) {
+        creators.getStoriesForCreatorId(creatorId
                 , request.getLimit()
                 , request.getOffset()
                 , String.valueOf(request.getTimestamp())

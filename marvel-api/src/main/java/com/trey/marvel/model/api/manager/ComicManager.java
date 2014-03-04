@@ -5,6 +5,7 @@ import com.trey.marvel.model.api.request.CharacterRequest;
 import com.trey.marvel.model.api.request.ComicRequest;
 import com.trey.marvel.model.api.request.CreatorRequest;
 import com.trey.marvel.model.api.request.EventRequest;
+import com.trey.marvel.model.api.request.RequestSignature;
 import com.trey.marvel.model.api.request.StoryRequest;
 import com.trey.marvel.model.api.response.ServiceResponse;
 import com.trey.marvel.model.api.service.Comics;
@@ -17,7 +18,7 @@ import com.trey.marvel.model.api.vo.Story;
 import retrofit.Callback;
 
 /**
- * Manager that handles retrieval for lists of comics and requests related to a specific comic id.
+ * Manager that handles retrieval for comic information and requests related to a specific comic id.
  *
  * Created by Trey Robinson on 2/17/14.
  */
@@ -61,11 +62,12 @@ public class ComicManager extends  BaseManager{
      * @param comicId  Unique ID for the comic
      * @param callback Handler called on request completion
      */
-    public void getComicWithId(int comicId, ComicRequest request, Callback<ServiceResponse<Comic>> callback){
+    public void getComicWithId(int comicId, Callback<ServiceResponse<Comic>> callback){
+        RequestSignature request = RequestSignature.create();
         comics.getComicWithId(comicId
-                , String.valueOf(request.getTimestamp())
-                , request.getApiKey()
-                , request.getHashSignature()
+                , String.valueOf(request.timeStamp)
+                , request.publicKey
+                , request.hashSignature
                 , callback);
     }
 

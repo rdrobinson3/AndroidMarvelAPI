@@ -18,7 +18,7 @@ import com.trey.marvel.model.api.vo.Story;
 import retrofit.Callback;
 
 /**
- * Manager that handles retrieval for lists of characters and requests related to a specific character id.
+ * Manager that handles retrieval of character information and requests related to a specific character id.
  *
  * Created by Trey Robinson on 2/12/14.
  */
@@ -35,7 +35,7 @@ public class CharacterManager extends BaseManager {
      * @param request Parameters for the request
      * @param callback Handler called on request completion
      */
-    public void fetchCharacters(CharacterRequest request, Callback<ServiceResponse<Character>> callback) {
+    public void listCharacters(CharacterRequest request, Callback<ServiceResponse<Character>> callback) {
         characters.listCharacters(request.getLimit()
                 , request.getOffset()
                 , String.valueOf(request.getTimestamp())
