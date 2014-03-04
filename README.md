@@ -8,7 +8,7 @@ Usage
 --------
 Create a new instance of the MarvelAPI
 
-    MarvelApi.create("YOUR PRIVATE KEY", "YOUR PUBLIC KEY", getApplicationContext());
+    MarvelApi.create("YOUR PRIVATE KEY", "YOUR PUBLIC KEY", getApplicationContext(), 5*1024*1024);
 
 Initiate a request to one of the manager classes. 
 
