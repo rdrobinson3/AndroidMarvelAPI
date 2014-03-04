@@ -19,6 +19,9 @@ import retrofit.client.OkClient;
 import retrofit.converter.GsonConverter;
 
 /**
+ * Main API class. Initialize by calling create. Afterwards the API can be retrieved by calling getInstance().
+ * The application context is used to create a response cache. Cache size is configurable.
+ *
  * Created by Trey Robinson on 2/12/14.
  */
 public class MarvelApi {
@@ -30,16 +33,36 @@ public class MarvelApi {
 
     private RestAdapter mRestAdapter;
 
-    public static void create(String privateKey, String publicKey, Context applicationContext){
-        API =  new MarvelApi(privateKey, publicKey, applicationContext);
-    }
-
+    /**
+     * Returns an instance of the MarvelApi. Must initialize static instance with
+     * a call to {@link #create(String, String, android.content.Context, long)}
+     * @return
+     */
     public static MarvelApi getInstance(){
         return API;
     }
 
-    private MarvelApi(String privateKey, String publicKey, Context applicationContext){
+    /**
+     * Retrieve all characters matching the provided request parameters.
+     * @param privateKey The private key provided by Marvel
+     * @param publicKey THe public key provided by Marvel
+     * @param applicationContext Application Context for creating cache location
+     * @param cacheSize Size of the HTTPResponseCache
+     */
+    public static void create(String privateKey, String publicKey, Context applicationContext, long cacheSize){
+        API =  new MarvelApi(privateKey, publicKey, applicationContext, cacheSize);
+    }
 
+    /**
+     * Retrieve all characters matching the provided request parameters.
+     * @param privateKey The private key provided by Marvel
+     * @param publicKey THe public key provided by Marvel
+     * @param applicationContext Application Context for creating cache location
+     * @param cacheSize Size of the HTTPResponseCache
+     */
+    private MarvelApi(String privateKey, String publicKey, Context applicationContext, long cacheSize){
+
+        //Set the static keys so they can be used to generate the request signatures.
         RequestSignature.apiKey = publicKey;
         RequestSignature.privateKey = privateKey;
 
@@ -47,7 +70,7 @@ public class MarvelApi {
         HttpResponseCache cache = null;
 
         try {
-            cache = new HttpResponseCache(applicationContext.getCacheDir(), 1024);
+            cache = new HttpResponseCache(applicationContext.getCacheDir(), cacheSize);
         } catch (IOException e) {
             e.printStackTrace();
         }

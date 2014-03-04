@@ -8,6 +8,12 @@ import java.security.NoSuchAlgorithmException;
  */
 public class HashUtil {
 
+    /**
+     * Creates an md5 hash string from the string input
+     *
+     * @param s  String to be hashed
+     * @return
+     */
     public static final String md5(final String s) {
         final String MD5 = "MD5";
         try {

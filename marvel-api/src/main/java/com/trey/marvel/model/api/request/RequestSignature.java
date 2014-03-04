@@ -6,6 +6,10 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 /**
+ * Signature required for all requests per Marvels API documentation. Signatures
+ * are a combination of the public and private keys as well as a generated timestamp that
+ * makes each request unique.
+ *
  * Created by Trey Robinson on 2/12/14.
  */
 public class RequestSignature {
@@ -24,6 +28,10 @@ public class RequestSignature {
         this.hashSignature = HashUtil.md5(String.valueOf(this.timeStamp) + privateKey + publicKey);
     }
 
+    /**
+     * Returnes a new instance of a request signature.
+     * @return
+     */
     public static RequestSignature create(){
         return  new RequestSignature();
     }

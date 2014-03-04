@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * Created by Trey Robinson on 2/16/14.
+ *
+ * Common functionality used by all service managers.
  */
 public class BaseManager {
 
