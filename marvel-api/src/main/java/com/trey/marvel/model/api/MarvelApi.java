@@ -6,7 +6,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.bind.DateTypeAdapter;
-import com.squareup.okhttp.HttpResponseCache;
+import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
 import com.trey.marvel.model.api.request.RequestSignature;
 import com.trey.marvel.model.api.response.DateAdapter;
@@ -47,7 +47,7 @@ public class MarvelApi {
      * @param privateKey The private key provided by Marvel
      * @param publicKey THe public key provided by Marvel
      * @param applicationContext Application Context for creating cache location
-     * @param cacheSize Size of the HTTPResponseCache
+     * @param cacheSize Size of the Cache
      */
     public static void create(String privateKey, String publicKey, Context applicationContext, long cacheSize){
         API =  new MarvelApi(privateKey, publicKey, applicationContext, cacheSize);
@@ -58,7 +58,7 @@ public class MarvelApi {
      * @param privateKey The private key provided by Marvel
      * @param publicKey THe public key provided by Marvel
      * @param applicationContext Application Context for creating cache location
-     * @param cacheSize Size of the HTTPResponseCache
+     * @param cacheSize Size of the Cache
      */
     private MarvelApi(String privateKey, String publicKey, Context applicationContext, long cacheSize){
 
@@ -67,15 +67,15 @@ public class MarvelApi {
         RequestSignature.privateKey = privateKey;
 
         OkHttpClient okHttpClient = new OkHttpClient();
-        HttpResponseCache cache = null;
+        Cache cache = null;
 
         try {
-            cache = new HttpResponseCache(applicationContext.getCacheDir(), cacheSize);
+            cache = new Cache(applicationContext.getCacheDir(), cacheSize);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        okHttpClient.setResponseCache(cache);
+        okHttpClient.setCache(cache);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Date.class, new DateAdapter())
@@ -84,7 +84,7 @@ public class MarvelApi {
         mRestAdapter = new RestAdapter.Builder()
                 .setClient(new OkClient(okHttpClient))
                 .setConverter(new GsonConverter(gson))
-                .setServer(API_URL)
+                .setEndpoint(API_URL)
                 .build();
     }
 
