@@ -9,7 +9,7 @@ import java.util.List;
 public class SeriesList {
 
     public int available;
-    public Service collectionURI;
+    public String collectionURI;
     public List<Item> items;
     public int returned;
 }
